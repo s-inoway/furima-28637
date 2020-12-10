@@ -1,24 +1,65 @@
-# README
+# Table design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column     | Type   | Options                   |
+| ---------- | ------ | ------------------------- |
+| nickname   | string | null: false               |
+| email      | string | null: false, unique: true |
+| first_name | string | null: false               |
+| last_name  | string | null: false               |
+| birthday   | date   | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## items table
 
-* Database creation
+| Column    | Type       | Options                        |
+| --------- | --------   | ------------------------------ |
+| users_id  | references | null: false, foreign_key: true |
+| image     | string     | null: false                    |
+| name      | string     | null: false                    |
+| comment   | string     | null: false                    |
+| category  | string     | null: false                    |
+| condition | string     | null: false                    |
+| carriage  | string     | null: false                    |
+| ship_from | string     | null: false                    |
+| ship_date | string     | null: false                    |
+| price     | integer    | null: false                    |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :users
+- has_one :purchases
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchases table
 
-* Deployment instructions
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| users_id | references | null: false, foreign_key: true |
+| items_id | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :users
+- belongs_to :items
+- has_one :addresses
+
+## addresses table
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| purchases_id | references | null: false, foreign_key: true |
+| zip_code     | string     | null: false                    |
+| pref         | string     | null: false                    |
+| city         | string     | null: false                    |
+| chome        | string     | null: false                    |
+| bldg         | string     |                                |
+| tel          | integer    | null: false                    |
+
+### Association
+
+- belongs_to :purchases
