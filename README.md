@@ -6,6 +6,7 @@
 | ---------- | ------ | ------------------------- |
 | nickname   | string | null: false               |
 | email      | string | null: false, unique: true |
+| password   | string | null: false               |
 | first_name | string | null: false               |
 | last_name  | string | null: false               |
 | birthday   | date   | null: false               |
@@ -53,7 +54,7 @@
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | purchases_id | references | null: false, foreign_key: true |
-| zip_code     | string     | null: false                    |
+| zip_code     | integer    | null: false                    |
 | pref         | string     | null: false                    |
 | city         | string     | null: false                    |
 | chome        | string     | null: false                    |
