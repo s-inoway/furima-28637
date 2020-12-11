@@ -55,12 +55,12 @@
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | purchase | references | null: false, foreign_key: true |
-| zip_code | integer    | null: false                    |
-| pref     | string     | null: false                    |
+| zip_code | string     | null: false                    |
+| pref_id  | integer    | null: false                    |
 | city     | string     | null: false                    |
 | chome    | string     | null: false                    |
 | bldg     | string     |                                |
-| tel      | integer    | null: false                    |
+| tel      | string     | null: false                    |
 
 ### Association
 
