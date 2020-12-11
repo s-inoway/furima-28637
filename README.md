@@ -24,7 +24,7 @@
 | --------- | ---------- | ------------------------------ |
 | user      | references | null: false, foreign_key: true |
 | name      | string     | null: false                    |
-| comment   | string     | null: false                    |
+| comment   | text       | null: false                    |
 | category  | string     | null: false                    |
 | condition | string     | null: false                    |
 | carriage  | string     | null: false                    |
