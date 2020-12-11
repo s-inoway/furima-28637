@@ -21,8 +21,8 @@
 ## items table
 
 | Column    | Type       | Options                        |
-| --------- | --------   | ------------------------------ |
-| users_id  | references | null: false, foreign_key: true |
+| --------- | ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
 | image     | string     | null: false                    |
 | name      | string     | null: false                    |
 | comment   | string     | null: false                    |
@@ -40,10 +40,10 @@
 
 ## purchases table
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| users_id | references | null: false, foreign_key: true |
-| items_id | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -53,15 +53,15 @@
 
 ## addresses table
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| purchases_id | references | null: false, foreign_key: true |
-| zip_code     | integer    | null: false                    |
-| pref         | string     | null: false                    |
-| city         | string     | null: false                    |
-| chome        | string     | null: false                    |
-| bldg         | string     |                                |
-| tel          | integer    | null: false                    |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| purchase | references | null: false, foreign_key: true |
+| zip_code | integer    | null: false                    |
+| pref     | string     | null: false                    |
+| city     | string     | null: false                    |
+| chome    | string     | null: false                    |
+| bldg     | string     |                                |
+| tel      | integer    | null: false                    |
 
 ### Association
 
