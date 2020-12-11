@@ -23,7 +23,6 @@
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
 | user      | references | null: false, foreign_key: true |
-| image     | string     | null: false                    |
 | name      | string     | null: false                    |
 | comment   | string     | null: false                    |
 | category  | string     | null: false                    |
