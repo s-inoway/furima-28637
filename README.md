@@ -20,17 +20,17 @@
 
 ## items table
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user      | references | null: false, foreign_key: true |
-| name      | string     | null: false                    |
-| comment   | text       | null: false                    |
-| category  | string     | null: false                    |
-| condition | string     | null: false                    |
-| carriage  | string     | null: false                    |
-| ship_from | string     | null: false                    |
-| ship_date | string     | null: false                    |
-| price     | integer    | null: false                    |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| name         | string     | null: false                    |
+| comment      | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| carriage_id  | integer    | null: false                    |
+| ship_from_id | integer    | null: false                    |
+| ship_date_id | integer    | null: false                    |
+| price        | integer    | null: false                    |
 
 ### Association
 
