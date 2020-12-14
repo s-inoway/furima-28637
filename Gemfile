@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', require: false
   gem 'pry-rails'
+  gem 'devise'
 end
 
 group :development do
