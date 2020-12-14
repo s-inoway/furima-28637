@@ -28,14 +28,14 @@
 | category_id  | integer    | null: false                    |
 | condition_id | integer    | null: false                    |
 | carriage_id  | integer    | null: false                    |
-| ship_from_id | integer    | null: false                    |
+| pref_id      | integer    | null: false                    |
 | ship_date_id | integer    | null: false                    |
 | price        | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
-- has_one :purchases
+- has_one :purchase
 
 ## purchases table
 
