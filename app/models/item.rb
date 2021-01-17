@@ -15,6 +15,6 @@ class Item < ApplicationRecord
     validates :carriage_id,  numericality: { other_than: 1 }
     validates :pref_id,      numericality: { other_than: 1 }
     validates :ship_date_id, numericality: { other_than: 1 }
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than: 1000000 }, format: { with: /^[0-9]+$/ }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than: 1000000 }, format: { with: /\A[0-9]+\z/ }
   end
 end
