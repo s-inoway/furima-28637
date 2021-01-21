@@ -7,8 +7,9 @@ class Item < ApplicationRecord
   belongs_to :ship_date
   has_one_attached :image
 
+  belongs_to :user
+
   with_options presence: true do
-    validates :user_id
     validates :image
     validates :name
     validates :comment
