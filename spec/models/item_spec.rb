@@ -8,10 +8,6 @@ RSpec.describe Item, type: :model do
     end
 
     context '正常系' do
-      it 'ユーザーidがあると出品できる' do
-        @item.user_id = 1
-        expect(@item).to be_valid
-      end
 
       it '画像があると出品できる' do
         @item.image = fixture_file_upload('app/assets/images/sample2.jpg')
@@ -61,11 +57,6 @@ RSpec.describe Item, type: :model do
     end
 
     context '異常系' do
-      it 'ユーザーidが無いと出品できない' do
-        @item.user_id = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include "User must exist"
-      end
 
       it '画像が無いと出品できない' do
         @item.image = nil
