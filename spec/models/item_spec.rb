@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
       it 'ユーザーidが無いと出品できない' do
         @item.user_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "User can't be blank"
+        expect(@item.errors.full_messages).to include "User must exist"
       end
 
       it '画像が無いと出品できない' do
@@ -91,10 +91,22 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include 'Category must be other than 1'
       end
 
+      it '商品のカテゴリーが無いと出品できない' do
+        @item.category_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category can't be blank"
+      end
+
       it '商品の状態が(---)だと出品できない' do
         @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include 'Condition must be other than 1'
+      end
+
+      it '商品の状態が無いと出品できない' do
+        @item.condition_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Condition can't be blank"
       end
 
       it '配送料の負担が(---)だと出品できない' do
@@ -103,16 +115,34 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include 'Carriage must be other than 1'
       end
 
+      it '配送料の負担が無いと出品できない' do
+        @item.carriage_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Carriage can't be blank"
+      end
+
       it '発送元の地域が(---)だと出品できない' do
         @item.pref_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include 'Pref must be other than 1'
       end
 
+      it '発送元の地域が無いと出品できない' do
+        @item.pref_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Pref can't be blank"
+      end
+
       it '発送までの日数が(---)だと出品できない' do
         @item.ship_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include 'Ship date must be other than 1'
+      end
+
+      it '発送までの日数が無いと出品できない' do
+        @item.ship_date_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Ship date can't be blank"
       end
 
       it '価格が無いと出品できない' do
