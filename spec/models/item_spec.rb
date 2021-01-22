@@ -8,7 +8,6 @@ RSpec.describe Item, type: :model do
     end
 
     context '正常系' do
-
       it '画像があると出品できる' do
         @item.image = fixture_file_upload('app/assets/images/sample2.jpg')
         expect(@item).to be_valid
@@ -57,7 +56,6 @@ RSpec.describe Item, type: :model do
     end
 
     context '異常系' do
-
       it '画像が無いと出品できない' do
         @item.image = nil
         @item.valid?
