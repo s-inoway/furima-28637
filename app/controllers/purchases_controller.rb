@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   def index
     @item = Item.find(params[:item_id])
-    if (current_user.id == @item.user_id) || !(Purchase.exists?(item_id: @item.id))
+    if (current_user.id == @item.user_id) || !Purchase.exists?(item_id: @item.id)
       redirect_to root_path
     else
       @purchase_address = PurchaseAddress.new
@@ -20,6 +20,7 @@ class PurchasesController < ApplicationController
   end
 
   private
+
   def purchase_params
     params.require(:purchase_address).permit(
       :zip_code, :pref_id, :city, :chome, :bldg, :tel

@@ -50,13 +50,13 @@ RSpec.describe PurchaseAddress, type: :model do
       it '郵便番号にハイフンがないと保存できない' do
         @purchase.zip_code = '1234567'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include "Zip code is invalid"
+        expect(@purchase.errors.full_messages).to include 'Zip code is invalid'
       end
 
       it '郵便番号が全角だと保存できない' do
         @purchase.zip_code = '１２３−４５６７'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include "Zip code is invalid"
+        expect(@purchase.errors.full_messages).to include 'Zip code is invalid'
       end
 
       it '都道府県idが1だと保存できない' do
@@ -70,7 +70,7 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include "Pref can't be blank"
       end
-      
+
       it '市区町村が空だと保存できない' do
         @purchase.city = ''
         @purchase.valid?
@@ -87,24 +87,24 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase.tel = ''
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include "Tel can't be blank"
-      end 
+      end
 
       it '電話番号が11桁以上だと保存できない' do
         @purchase.tel = '090123456789'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include "Tel is invalid"
+        expect(@purchase.errors.full_messages).to include 'Tel is invalid'
       end
 
       it '電話番号が全角数字だと保存できない' do
         @purchase.tel = '０９０１２３４５６７８'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include "Tel is invalid"
+        expect(@purchase.errors.full_messages).to include 'Tel is invalid'
       end
-      
+
       it '電話番号にハイフンがあると保存できない' do
         @purchase.tel = '090-1234-5678'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include "Tel is invalid"
+        expect(@purchase.errors.full_messages).to include 'Tel is invalid'
       end
     end
   end
