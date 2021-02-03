@@ -7,7 +7,6 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '正常系' do
-
       it 'トークンがあれば保存できる' do
         @purchase.token = 'tok_1234567890abcdefghijk'
         expect(@purchase).to be_valid
@@ -47,7 +46,6 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '異常系' do
-
       it 'トークンが空だと保存できない' do
         @purchase.token = ''
         @purchase.valid?
