@@ -7,6 +7,12 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '正常系' do
+
+      it 'トークンがあれば保存できる' do
+        @purchase.token = 'tok_1234567890abcdefghijk'
+        expect(@purchase).to be_valid
+      end
+
       it '郵便番号が3桁+ハイフン+4桁であれば保存できる' do
         @purchase.zip_code = '123-4567'
         expect(@purchase).to be_valid
@@ -41,6 +47,13 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '異常系' do
+
+      it 'トークンが空だと保存できない' do
+        @purchase.token = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include "Token can't be blank"
+      end
+
       it '郵便番号が空だと保存できない' do
         @purchase.zip_code = ''
         @purchase.valid?
