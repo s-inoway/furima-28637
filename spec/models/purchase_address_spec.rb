@@ -143,6 +143,12 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include 'Tel is invalid'
       end
+
+      it '電話番号が半角英数字混合だと保存できない' do
+        @purchase.tel = '0901234abcd'
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include 'Tel is invalid'
+      end
     end
   end
 end
