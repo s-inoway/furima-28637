@@ -126,7 +126,6 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <%if @items.exists? %>
         <% @items.each do |item| %>
           <li class='list'>
@@ -134,13 +133,13 @@
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
 
-              <%# 商品が売れていればsold outを表示しましょう %>
-              <%# <% unless item.購入記録.exists? %>
-                <%# <div class='sold-out'> %>
-                  <%# <span>Sold Out!!</span> %>
-                <%# </div> %>
-              <%# <% end %>
-
+              <%# sold outの表示 %>
+              <% if @purchases.include?(item.id) %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <% end %>
+              <%# /sold outの表示 %>
             </div>
             <div class='item-info'>
               <h3 class='item-name'>
@@ -159,7 +158,6 @@
         <% end %>
       <% else %>
       <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -177,7 +175,6 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
       <%# /商品がない場合のダミー %>
       <% end %>
     </ul>

@@ -6,8 +6,7 @@ RSpec.describe User, type: :model do
     end
 
     context '正常系' do
-      it 'ニックネームがあれば登録できる' do
-        @user.nickname = 'ニックネーム'
+      it '全て正常に入力されていれば登録できる' do
         expect(@user).to be_valid
       end
 
@@ -34,10 +33,6 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
-      it '生年月日があれば登録できる' do
-        @user.birthday = '2000-01-01'
-        expect(@user).to be_valid
-      end
     end
 
     context '異常系' do
