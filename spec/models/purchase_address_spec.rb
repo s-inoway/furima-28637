@@ -3,10 +3,24 @@ require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   describe '購入記録保存' do
     before do
-      @purchase = FactoryBot.build(:purchase_address)
+      user = FactoryBot.create(:user)
+      item_image = fixture_file_upload('app/assets/images/sample1.jpg')
+      item = FactoryBot.create(:item, user_id: user.id, image: item_image)
+      @purchase = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
+      sleep(0.1)
     end
 
     context '正常系' do
+      it 'ユーザーidが紐づいていれば保存できる' do
+        @purchase.user_id = 1
+        expect(@purchase).to be_valid
+      end
+
+      it '商品のidが紐づいていれば保存できる' do
+        @purchase.item_id = 1
+        expect(@purchase).to be_valid
+      end
+
       it 'トークンがあれば保存できる' do
         @purchase.token = 'tok_1234567890abcdefghijk'
         expect(@purchase).to be_valid
@@ -46,6 +60,18 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '異常系' do
+      it 'ユーザーidが紐づいていないと保存できない' do
+        @purchase.user_id = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include "User can't be blank"
+      end
+      
+      it '商品のidが紐づいていないと保存できない' do
+        @purchase.item_id = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include "Item can't be blank"
+      end
+
       it 'トークンが空だと保存できない' do
         @purchase.token = ''
         @purchase.valid?
