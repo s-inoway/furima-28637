@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   before_action :set_item
   def index
     purchases = Purchase.includes(:item).pluck(:item_id)
-    if (current_user.id == @item.user_id) || purchases.include?(item.id)
+    if (current_user.id == @item.user_id) || purchases.include?(@item.id)
       redirect_to root_path
     else
       @purchase_address = PurchaseAddress.new
