@@ -11,50 +11,12 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '正常系' do
-      it 'ユーザーidが紐づいていれば保存できる' do
-        @purchase.user_id = 1
+      it '全て入力されていれば保存できる' do
         expect(@purchase).to be_valid
       end
 
-      it '商品のidが紐づいていれば保存できる' do
-        @purchase.item_id = 1
-        expect(@purchase).to be_valid
-      end
-
-      it 'トークンがあれば保存できる' do
-        @purchase.token = 'tok_1234567890abcdefghijk'
-        expect(@purchase).to be_valid
-      end
-
-      it '郵便番号が3桁+ハイフン+4桁であれば保存できる' do
-        @purchase.zip_code = '123-4567'
-        expect(@purchase).to be_valid
-      end
-
-      it '都道府県idが1以外であれば保存できる' do
-        @purchase.pref_id = 2
-        expect(@purchase).to be_valid
-      end
-
-      it '市区町村があれば保存できる' do
-        @purchase.city = '名古屋市'
-        expect(@purchase).to be_valid
-      end
-
-      it '番地があれば保存できる' do
-        @purchase.chome = '1丁目2-3'
-        expect(@purchase).to be_valid
-      end
-
-      it '建物名があってもなくても保存できる' do
+      it '建物名が入力されていなくても保存できる' do
         @purchase.bldg = ''
-        expect(@purchase).to be_valid
-        @purchase.bldg = '〇〇ビルディング'
-        expect(@purchase).to be_valid
-      end
-
-      it '電話番号がハイフンなしの11桁以内であれば保存できる' do
-        @purchase.tel = '09012345678'
         expect(@purchase).to be_valid
       end
     end

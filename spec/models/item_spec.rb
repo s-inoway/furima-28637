@@ -9,17 +9,7 @@ RSpec.describe Item, type: :model do
     end
 
     context '正常系' do
-      it '画像があると出品できる' do
-        @item.image = fixture_file_upload('app/assets/images/sample2.jpg')
-        expect(@item).to be_valid
-      end
-      it '商品名があると出品できる' do
-        @item.name = '商品の名前'
-        expect(@item).to be_valid
-      end
-
-      it '商品の説明があると出品できる' do
-        @item.comment = 'この商品は〇〇で、××です。'
+      it '全て正常に入力・選択されていると出品できる' do
         expect(@item).to be_valid
       end
 
