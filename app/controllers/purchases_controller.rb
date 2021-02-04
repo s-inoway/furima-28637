@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item
   def index
-    set_item
     if (current_user.id == @item.user_id) || Purchase.exists?(item_id: @item.id)
       redirect_to root_path
     else
@@ -10,7 +10,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    set_item
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
